@@ -29,3 +29,10 @@ Rea ────────────────── X
 Reac ───────────────── X
 React ──────────────── wait 500ms ── API
 ```
+
+### What is useSearchParams: useSearchParams comes from React Router
+It lets React read and modify the query parameters in the browser URL.
+/listings : is just the listings page.
+/listings?search=iphone means: Listings page, filtered by iphone. 
+### The browser considers these part of the URL, so they survive refresh.
+
