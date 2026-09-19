@@ -36,3 +36,29 @@ It lets React read and modify the query parameters in the browser URL.
 /listings?search=iphone means: Listings page, filtered by iphone. 
 ### The browser considers these part of the URL, so they survive refresh.
 
+const [searchParams, setSearchParams] = useSearchParams();
+ we have two things searchParams +setSearchParams
+ SearchParams : Used to read Url Parameter
+ setSearchParams: use to modift URl parameters
+ const search = searchParams.get("search");
+
+ ### How do we decide which API to call
+
+ const params = Object.fromEntries(
+  searchParams.entries()
+);
+/listings?search=iphone&city=Delhi
+Then: searchParams.entries()
+gives us parameter pairs conceptually like:
+[
+  ["search", "iphone"],
+  ["city", "Delhi"]
+]
+Then:
+Object.fromEntries(...)
+converts that into:
+{
+  search: "iphone",
+  city: "Delhi"
+}
+So now we have a normal JavaScript object.
