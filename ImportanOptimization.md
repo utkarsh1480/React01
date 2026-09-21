@@ -62,3 +62,60 @@ converts that into:
   city: "Delhi"
 }
 So now we have a normal JavaScript object.
+
+
+### While using Socket
+socket.handshake.auth.token
+But your frontend currently sends no token, so this happens:
+Frontend
+   ↓
+socket.connect()
+   ↓
+socket.handshake.auth.token = undefined
+   ↓
+Authentication token is missing ❌
+
+###  Solution 
+```JS
+npm install cookie
+
+import { verifyAccessToken } from "../utils/jwt.js";
+import cookie from "cookie";
+
+async function authenticateSocket(socket, next) {
+    try {
+        const cookies = cookie.parse(
+            socket.handshake.headers.cookie || ""
+        );
+
+        const token = cookies.token;
+
+        if (!token) {
+            return next(
+                new Error("Authentication token is missing")
+            );
+        }
+
+        const decoded = verifyAccessToken(token);
+
+        console.log("DECODED TOKEN:", decoded);
+
+        socket.userId = decoded.sub;
+
+        next();
+
+    } catch (error) {
+        console.log(
+            "Socket authentication error:",
+            error.message
+        );
+
+        return next(
+            new Error("Invalid authentication token")
+        );
+    }
+}
+
+export default authenticateSocket;
+
+```
