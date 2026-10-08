@@ -169,6 +169,13 @@ Except ports 80 and 443 → only specific services are allowed.
 Firewall → controls network traffic according to rules
 
 Attack surface = all the points through which an attacker could potentially interact with or attack a system.
+Why might a firewall need explicit configuration for an internal application using a custom TCP port? : Non-standard ports may be blocked unless explicitly allowed
+
+Triggered cloud function → C
+This is Serverless / FaaS.
+Example:
+Request/Event → Function executes → Result
+You don't manage the underlying server.
 
 
 
