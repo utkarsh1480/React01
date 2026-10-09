@@ -177,8 +177,22 @@ Example:
 Request/Event → Function executes → Result
 You don't manage the underlying server.
 
+```JS
+TTL stands for Time To Live. It is a limit that determines how long something can exist or remain valid before it expires or is discarded.
+In networking, TTL is commonly used in IP packets and DNS records, but its meaning differs slightly in each case.
+1. TTL in networking (IP packets)
+Imagine you send data from your laptop to a server. The data travels through multiple routers.
+TTL prevents packets from circulating forever if a routing loop occurs.
+```
 
-
+```JS
+TCP vs UDP: TCP provides reliable, ordered delivery; UDP prioritizes low overhead and low latency.
+NAT: Allows private-network devices to communicate externally using translated IP addresses.
+Reverse proxy vs load balancer: A reverse proxy receives and forwards client requests; a load balancer distributes traffic across backend servers. Their functions can overlap.
+Vertical vs horizontal scaling: Vertical = increase resources on one server; horizontal = add more servers.
+Region vs Availability Zone: A region is a geographic area; an AZ is an isolated location within that region.
+IaaS vs PaaS vs SaaS: Infrastructure, application-development platform, and ready-to-use software, respectively.
+```
 
 
 
