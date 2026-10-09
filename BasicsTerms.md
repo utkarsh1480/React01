@@ -55,6 +55,7 @@ When infrastructure is created using configuration/code files rather than manual
 
 200 → Success
 201 → Created
+204 > No Content
 400 → Bad Request
 401 → Authentication required/invalid
 403 → Authenticated but not authorized
@@ -235,10 +236,43 @@ Header	Variable length	Fixed 40-byte base header
 
 ```
 
+TCP establishes the connection; TLS provides encryption, integrity, and authentication for HTTPS. ARP maps IP addresses to MAC addresses on a local network.
 
+TCP: establishes a reliable connection for traditional HTTPS over TCP.
+TLS: protects the communication.
+HTTP: defines how web requests and responses work.
+HTTPS: HTTP secured using TLS.
 
+Imagine your application runs inside a Docker container.
+A container may be deleted and recreated during deployment. If important data exists only in its writable layer, that data may disappear when the container is removed.
+A persistent volume stores data separately from the container's writable layer, allowing it to survive container recreation.
 
+For example, if a database runs in a container, its database files should be stored using appropriate persistent storage. Otherwise, recreating the container could result in data loss.
 
+### Acid Property
+```
+Atomicity — All or nothing
+Meaning: Either every operation in the transaction succeeds, or the transaction is rolled back.
+
+Consistency — Database rules remain valid
+Meaning: A transaction must preserve the database's defined rules and constraints.
+Suppose a database rule prohibits negative account balances. A transaction that would violate this rule must be rejected.
+
+Isolation — Concurrent transactions don't interfere improperly.
+Meaning: Concurrent transactions should behave correctly, as if their operations were properly isolated according to the database's chosen isolation level.
+
+magine two transactions try to withdraw ₹800 from Account A at almost the same time.
+Initial balance = ₹1,000.
+Without appropriate concurrency control, both transactions might read ₹1,000 and both attempt to withdraw ₹800, potentially causing an incorrect balance.
+Isolation and concurrency-control mechanisms help prevent such anomalies.
+
+Think of it this way:
+Two people are editing the same bank account at the same time. The database must coordinate their operations so that the final result respects the rules.
+
+Durability — Committed changes stay saved
+Meaning: Once a transaction is successfully committed, its changes should survive a system crash or restart, according to the database's durability guarantees.
+
+```
 
 
 
