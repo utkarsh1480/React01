@@ -177,7 +177,7 @@ Example:
 Request/Event → Function executes → Result
 You don't manage the underlying server.
 
-```JS
+```
 TTL stands for Time To Live. It is a limit that determines how long something can exist or remain valid before it expires or is discarded.
 In networking, TTL is commonly used in IP packets and DNS records, but its meaning differs slightly in each case.
 1. TTL in networking (IP packets)
@@ -185,16 +185,55 @@ Imagine you send data from your laptop to a server. The data travels through mul
 TTL prevents packets from circulating forever if a routing loop occurs.
 ```
 
-```JS
+```
 TCP vs UDP: TCP provides reliable, ordered delivery; UDP prioritizes low overhead and low latency.
-NAT: Allows private-network devices to communicate externally using translated IP addresses.
+NAT: Allows private-network devices to communicate externally using translated IP addresses. NAT is a technique used by a router to translate private IP addresses into public IP addresses and vice versa.
 Reverse proxy vs load balancer: A reverse proxy receives and forwards client requests; a load balancer distributes traffic across backend servers. Their functions can overlap.
 Vertical vs horizontal scaling: Vertical = increase resources on one server; horizontal = add more servers.
 Region vs Availability Zone: A region is a geographic area; an AZ is an isolated location within that region.
 IaaS vs PaaS vs SaaS: Infrastructure, application-development platform, and ready-to-use software, respectively.
 ```
 
+### What is IP?
+```
+An IP address (Internet Protocol address) is a logical address assigned to a device's network interface so that it can communicate over a network.
+Think of it like a home address.
+- Your home address helps a delivery person find your house.
+- An IP address helps network devices deliver data to the correct destination.
 
+What is IPv4?
+IPv4 stands for Internet Protocol version 4. It is the older and still widely used version of IP.
+Important facts about IPv4
+- It uses 32 bits.
+- It contains four octets, each consisting of 8 bits.
+- Each octet can have a value from 0 to 255.
+- Its total address space is \(2^{32}\), or approximately 4.3 billion addresses.
+
+What is IPv6?
+IPv6 stands for Internet Protocol version 6. It was developed mainly to address the shortage of IPv4 addresses and also includes improvements to IP addressing and protocol design.
+
+Important facts about IPv6
+- It uses 128 bits.
+- It has eight groups, each containing 16 bits.
+- It is written using hexadecimal digits: 0–9 and a–f.
+- Its total address space is \(2^{128}\), an enormous number of possible addresses.
+\[
+2^{128}\approx 3.4\times10^{38}
+\]
+
+4. IPv4 vs IPv6 — important differences
+Feature	IPv4	IPv6
+Version	4	6
+Address size	32 bits	128 bits
+Format	Decimal	Hexadecimal
+Example	192.168.1.10	2001:db8::1
+Separator	Dot (.)	Colon (:)
+Address space	About 4.3 billion	About \(3.4 \times 10^{38}\)
+Broadcast	Supported	No broadcast; multicast is used instead
+NAT	Common in IPv4 networks	Usually not required for address conservation
+Header	Variable length	Fixed 40-byte base header
+
+```
 
 
 
